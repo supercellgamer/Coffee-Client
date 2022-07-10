@@ -1,2 +1,3 @@
-Coffee Client is a customized version of VapeV4ForRoblox by xylex / 7GrandDadPGN\n
-Official vapev4 roblox discord - discord.gg/vxpe
+Coffee Client is a customized version of the roblox VapeV4 by xylex / 7GrandDadPGN
+
+Official vapev4 roblox discord - https://discord.gg/vxpe
