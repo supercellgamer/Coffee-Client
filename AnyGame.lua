@@ -22,12 +22,12 @@ local betterisfile = function(file)
 end
 local function GetURL(scripturl)
 	if shared.VapeDeveloper then
-		if not betterisfile("vape/"..scripturl) then
-			error("File not found : vape/"..scripturl)
+		if not betterisfile("coffee/"..scripturl) then
+			error("File not found : coffee/"..scripturl)
 		end
-		return readfile("vape/"..scripturl)
+		return readfile("coffee/"..scripturl)
 	else
-		local res = game:HttpGet("https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..scripturl, true)
+		local res = game:HttpGet("https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..scripturl, true)
 		assert(res ~= "404: Not Found", "File not found")
 		return res
 	end
@@ -135,7 +135,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..path:gsub("coffee/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -266,7 +266,7 @@ local radarcam = Instance.new("Camera")
 radarcam.FieldOfView = 45
 local Radar = GuiLibrary.CreateCustomWindow({
 	["Name"] = "Radar", 
-	["Icon"] = "vape/assets/RadarIcon1.png",
+	["Icon"] = "coffee/assets/RadarIcon1.png",
 	["IconSize"] = 16
 })
 local RadarColor = Radar.CreateColorSlider({
@@ -323,7 +323,7 @@ players.PlayerRemoving:connect(function(plr)
 end)
 GuiLibrary["ObjectsThatCanBeSaved"]["GUIWindow"]["Api"].CreateCustomToggle({
 	["Name"] = "Radar", 
-	["Icon"] = "vape/assets/RadarIcon2.png", 
+	["Icon"] = "coffee/assets/RadarIcon2.png", 
 	["Function"] = function(callback)
 		Radar.SetVisible(callback) 
 		if callback then
@@ -2001,7 +2001,7 @@ local Arrows = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].Create
 						thing.AnchorPoint = Vector2.new(0.5, 0.5)
 						thing.Position = UDim2.new(0.5, 0, 0.5, 0)
 						thing.Visible = false
-						thing.Image = getcustomassetfunc("vape/assets/ArrowIndicator.png")
+						thing.Image = getcustomassetfunc("coffee/assets/ArrowIndicator.png")
 						thing.Name = plr.Name
 						thing.Parent = ArrowsFolder
 					end
@@ -3616,14 +3616,14 @@ runcode(function()
 				vapecapeconnection = lplr.CharacterAdded:connect(function(char)
 					spawn(function()
 						pcall(function() 
-							Cape(char, getcustomassetfunc("vape/assets/VapeCape.png"))
+							Cape(char, getcustomassetfunc("coffee/assets/VapeCape.png"))
 						end)
 					end)
 				end)
 				if lplr.Character then
 					spawn(function()
 						pcall(function() 
-							Cape(lplr.Character, getcustomassetfunc("vape/assets/VapeCape.png"))
+							Cape(lplr.Character, getcustomassetfunc("coffee/assets/VapeCape.png"))
 						end)
 					end)
 				end

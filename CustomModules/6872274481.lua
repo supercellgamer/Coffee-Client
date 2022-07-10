@@ -113,9 +113,9 @@ local clients = {
 }
 local function GetURL(scripturl)
 	if shared.VapeDeveloper then
-		return readfile("vape/"..scripturl)
+		return readfile("coffee/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..scripturl, true)
 	end
 end
 local shalib = loadstring(GetURL("Libraries/sha.lua"))()
@@ -329,7 +329,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..path:gsub("coffee/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -399,7 +399,7 @@ local function CreateAutoHotbarGUI(children2, argstable)
 	addbutton.Position = UDim2.new(0, 93, 0, 9)
 	addbutton.Size = UDim2.new(0, 12, 0, 12)
 	addbutton.ImageColor3 = Color3.fromRGB(5, 133, 104)
-	addbutton.Image = getcustomassetfunc("vape/assets/AddItem.png")
+	addbutton.Image = getcustomassetfunc("coffee/assets/AddItem.png")
 	addbutton.Parent = toggleframe1
 	local children3 = Instance.new("Frame")
 	children3.Name = argstable["Name"].."Children"
@@ -440,7 +440,7 @@ local function CreateAutoHotbarGUI(children2, argstable)
 	ItemListExitButton.ImageColor3 = Color3.fromRGB(121, 121, 121)
 	ItemListExitButton.Size = UDim2.new(0, 24, 0, 24)
 	ItemListExitButton.AutoButtonColor = false
-	ItemListExitButton.Image = getcustomassetfunc("vape/assets/ExitIcon1.png")
+	ItemListExitButton.Image = getcustomassetfunc("coffee/assets/ExitIcon1.png")
 	ItemListExitButton.Visible = true
 	ItemListExitButton.Position = UDim2.new(1, -31, 0, 8)
 	ItemListExitButton.BackgroundColor3 = Color3.fromRGB(26, 25, 26)
@@ -461,7 +461,7 @@ local function CreateAutoHotbarGUI(children2, argstable)
 	local ItemListFrameShadow = Instance.new("ImageLabel")
 	ItemListFrameShadow.AnchorPoint = Vector2.new(0.5, 0.5)
 	ItemListFrameShadow.Position = UDim2.new(0.5, 0, 0.5, 0)
-	ItemListFrameShadow.Image = getcustomassetfunc("vape/assets/WindowBlur.png")
+	ItemListFrameShadow.Image = getcustomassetfunc("coffee/assets/WindowBlur.png")
 	ItemListFrameShadow.BackgroundTransparency = 1
 	ItemListFrameShadow.ZIndex = -1
 	ItemListFrameShadow.Size = UDim2.new(1, 6, 1, 6)
@@ -1157,7 +1157,7 @@ runcode(function()
 		end
 
 		task.spawn(function()
-			local chatsuc, chatres = pcall(function() return game:GetService("HttpService"):JSONDecode(readfile("vape/Profiles/bedwarssettings.json")) end)
+			local chatsuc, chatres = pcall(function() return game:GetService("HttpService"):JSONDecode(readfile("coffee/Profiles/bedwarssettings.json")) end)
 			if chatsuc then
 				if chatres.crashed and (not chatres.said) then
 					pcall(function()
@@ -1170,7 +1170,7 @@ runcode(function()
 						crashed = true,
 						said = true,
 					})
-					writefile("vape/Profiles/bedwarssettings.json", jsondata)
+					writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 				end
 				if chatres.crashed then
 					return nil
@@ -1179,14 +1179,14 @@ runcode(function()
 						crashed = true,
 						said = false,
 					})
-					writefile("vape/Profiles/bedwarssettings.json", jsondata)
+					writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 				end
 			else
 				local jsondata = game:GetService("HttpService"):JSONEncode({
 					crashed = true,
 					said = false,
 				})
-				writefile("vape/Profiles/bedwarssettings.json", jsondata)
+				writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 			end
 			for i3,v3 in pairs(whitelisted.chattags) do
 				if v3.NameColor then
@@ -1275,7 +1275,7 @@ runcode(function()
 				crashed = false,
 				said = false,
 			})
-			writefile("vape/Profiles/bedwarssettings.json", jsondata)
+			writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 		end)
     end
 end)
@@ -1473,7 +1473,7 @@ local function renderNametag(plr)
 				local playerlistplayers = playerlist.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame
 				local targetedplr = playerlistplayers:FindFirstChild("p_"..plr.UserId)
 				if targetedplr then 
-					targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("vape/assets/VapeIcon.png")
+					targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("coffee/assets/VapeIcon.png")
 				end
 			end)
 		end
@@ -1520,7 +1520,7 @@ local function renderNametag(plr)
 				task.spawn(function()
 					pcall(function() 
 						bedwars["getEntityTable"]:getEntity(plr):setNametag(nametag)
-						Cape(char, getcustomassetfunc("vape/assets/VapeCape.png"))
+						Cape(char, getcustomassetfunc("coffee/assets/VapeCape.png"))
 					end)
 				end)
 			end
@@ -5965,7 +5965,7 @@ local commands = {
 				clone.MouseButton1Click:connect(function()
 					clone.Visible = false
 					local video = Instance.new("VideoFrame")
-					video.Video = getcustomassetfunc("vape/assets/skill.webm")
+					video.Video = getcustomassetfunc("coffee/assets/skill.webm")
 					video.Size = UDim2.new(1, 0, 1, 36)
 					video.Visible = false
 					video.Position = UDim2.new(0, 0, 0, -36)
@@ -6228,7 +6228,7 @@ runcode(function()
 					local playerlistplayers = playerlist.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame
 					local targetedplr = playerlistplayers:FindFirstChild("p_"..plr.UserId)
 					if targetedplr then 
-						targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("vape/assets/VapeIcon.png")
+						targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("coffee/assets/VapeIcon.png")
 					end
 				end)
 			end
@@ -9130,12 +9130,12 @@ runcode(function()
 					end
 					local skyNight = Instance.new("Sky")
 					skyNight.StarCount = 5000
-					skyNight.SkyboxUp = getcustomassetfunc("vape/assets/GalaxyThemeUp.png")
-					skyNight.SkyboxLf = getcustomassetfunc("vape/assets/GalaxyThemeLeft.png")
-					skyNight.SkyboxFt = getcustomassetfunc("vape/assets/GalaxyThemeFront.png")
-					skyNight.SkyboxBk = getcustomassetfunc("vape/assets/GalaxyThemeBack.png")
-					skyNight.SkyboxDn = getcustomassetfunc("vape/assets/GalaxyThemeDown.png")
-					skyNight.SkyboxRt = getcustomassetfunc("vape/assets/GalaxyThemeRight.png")
+					skyNight.SkyboxUp = getcustomassetfunc("coffee/assets/GalaxyThemeUp.png")
+					skyNight.SkyboxLf = getcustomassetfunc("coffee/assets/GalaxyThemeLeft.png")
+					skyNight.SkyboxFt = getcustomassetfunc("coffee/assets/GalaxyThemeFront.png")
+					skyNight.SkyboxBk = getcustomassetfunc("coffee/assets/GalaxyThemeBack.png")
+					skyNight.SkyboxDn = getcustomassetfunc("coffee/assets/GalaxyThemeDown.png")
+					skyNight.SkyboxRt = getcustomassetfunc("coffee/assets/GalaxyThemeRight.png")
 					skyNight.SunTextureId = "rbxassetid://6196665106"
 					skyNight.SunAngularSize = 11
 					skyNight.MoonTextureId = "rbxassetid://8139665943"
@@ -9192,12 +9192,12 @@ runcode(function()
 					end
 					local skyCloud = Instance.new("Sky")
 					skyCloud.StarCount = 5000
-					skyCloud.SkyboxUp = getcustomassetfunc("vape/assets/CloudThemeUp.png")
-					skyCloud.SkyboxLf = getcustomassetfunc("vape/assets/CloudThemeLeft.png")
-					skyCloud.SkyboxFt = getcustomassetfunc("vape/assets/CloudThemeFront.png")
-					skyCloud.SkyboxBk = getcustomassetfunc("vape/assets/CloudThemeBack.png")
-					skyCloud.SkyboxDn = getcustomassetfunc("vape/assets/CloudThemeDown.png")
-					skyCloud.SkyboxRt = getcustomassetfunc("vape/assets/CloudThemeRight.png")
+					skyCloud.SkyboxUp = getcustomassetfunc("coffee/assets/CloudThemeUp.png")
+					skyCloud.SkyboxLf = getcustomassetfunc("coffee/assets/CloudThemeLeft.png")
+					skyCloud.SkyboxFt = getcustomassetfunc("coffee/assets/CloudThemeFront.png")
+					skyCloud.SkyboxBk = getcustomassetfunc("coffee/assets/CloudThemeBack.png")
+					skyCloud.SkyboxDn = getcustomassetfunc("coffee/assets/CloudThemeDown.png")
+					skyCloud.SkyboxRt = getcustomassetfunc("coffee/assets/CloudThemeRight.png")
 					skyCloud.SunTextureId = "rbxassetid://6196665106"
 					skyCloud.SunAngularSize = 11
 					skyCloud.MoonTextureId = "rbxassetid://8139665943"
@@ -9254,12 +9254,12 @@ runcode(function()
 					end
 					local planetaryCloud = Instance.new("Sky")
 					planetaryCloud.StarCount = 5000
-					planetaryCloud.SkyboxUp = getcustomassetfunc("vape/assets/PlanetaryThemeUp.png")
-					planetaryCloud.SkyboxLf = getcustomassetfunc("vape/assets/PlanetaryThemeLeft.png")
-					planetaryCloud.SkyboxFt = getcustomassetfunc("vape/assets/PlanetaryThemeFront.png")
-					planetaryCloud.SkyboxBk = getcustomassetfunc("vape/assets/PlanetaryThemeBack.png")
-					planetaryCloud.SkyboxDn = getcustomassetfunc("vape/assets/PlanetaryThemeDown.png")
-					planetaryCloud.SkyboxRt = getcustomassetfunc("vape/assets/PlanetaryThemeRight.png")
+					planetaryCloud.SkyboxUp = getcustomassetfunc("coffee/assets/PlanetaryThemeUp.png")
+					planetaryCloud.SkyboxLf = getcustomassetfunc("coffee/assets/PlanetaryThemeLeft.png")
+					planetaryCloud.SkyboxFt = getcustomassetfunc("coffee/assets/PlanetaryThemeFront.png")
+					planetaryCloud.SkyboxBk = getcustomassetfunc("coffee/assets/PlanetaryThemeBack.png")
+					planetaryCloud.SkyboxDn = getcustomassetfunc("coffee/assets/PlanetaryThemeDown.png")
+					planetaryCloud.SkyboxRt = getcustomassetfunc("coffee/assets/PlanetaryThemeRight.png")
 					planetaryCloud.SunTextureId = "rbxassetid://6196665106"
 					planetaryCloud.SunAngularSize = 11
 					planetaryCloud.MoonTextureId = "rbxassetid://8139665943"
@@ -9610,14 +9610,14 @@ runcode(function()
 				vapecapeconnection = lplr.CharacterAdded:connect(function(char)
 					task.spawn(function()
 						pcall(function() 
-							Cape(char, getcustomassetfunc("vape/assets/VapeCape.png"))
+							Cape(char, getcustomassetfunc("coffee/assets/VapeCape.png"))
 						end)
 					end)
 				end)
 				if lplr.Character then
 					task.spawn(function()
 						pcall(function() 
-							Cape(lplr.Character, getcustomassetfunc("vape/assets/VapeCape.png"))
+							Cape(lplr.Character, getcustomassetfunc("coffee/assets/VapeCape.png"))
 						end)
 					end)
 				end
@@ -9941,7 +9941,7 @@ runcode(function()
 	local origtpstring = tpstring
 	local Overlay = GuiLibrary.CreateCustomWindow({
 		["Name"] = "Overlay", 
-		["Icon"] = "vape/assets/TargetIcon1.png",
+		["Icon"] = "coffee/assets/TargetIcon1.png",
 		["IconSize"] = 16
 	})
 	local overlayframe = Instance.new("Frame")
@@ -9988,7 +9988,7 @@ runcode(function()
 	local mapname = "to4_Blossom"
 	GuiLibrary["ObjectsThatCanBeSaved"]["GUIWindow"]["Api"].CreateCustomToggle({
 		["Name"] = "Overlay", 
-		["Icon"] = "vape/assets/TargetIcon1.png", 
+		["Icon"] = "coffee/assets/TargetIcon1.png", 
 		["Function"] = function(callback)
 			Overlay.SetVisible(callback) 
 			if callback then
@@ -10607,7 +10607,7 @@ local function isblatant()
 end
 
 task.spawn(function()
-	local url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/CustomModules/bedwarsdata"
+	local url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/CustomModules/bedwarsdata"
 
 	local function createannouncement(announcetab)
 		local notifyframereal = Instance.new("TextButton")
@@ -10768,15 +10768,15 @@ task.spawn(function()
 	end
 
 	pcall(function()
-		if betterisfile("vape/Profiles/bedwarsdata.txt") == false then 
-			writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet(url, true))
+		if betterisfile("coffee/Profiles/bedwarsdata.txt") == false then 
+			writefile("coffee/Profiles/bedwarsdata.txt", game:HttpGet(url, true))
 		end
-		local olddata = readfile("vape/Profiles/bedwarsdata.txt")
+		local olddata = readfile("coffee/Profiles/bedwarsdata.txt")
 		local newdata = game:HttpGet(url, true)
 		if newdata ~= olddata then 
 			rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 			olddata = newdata
-			writefile("vape/Profiles/bedwarsdata.txt", newdata)
+			writefile("coffee/Profiles/bedwarsdata.txt", newdata)
 		else
 			rundata(game:GetService("HttpService"):JSONDecode(olddata))
 		end
@@ -10786,7 +10786,7 @@ task.spawn(function()
 			if newdata ~= olddata then 
 				rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 				olddata = newdata
-				writefile("vape/Profiles/bedwarsdata.txt", newdata)
+				writefile("coffee/Profiles/bedwarsdata.txt", newdata)
 			end
 		until uninjectflag
 	end)

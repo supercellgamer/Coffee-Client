@@ -54,7 +54,7 @@ end
 
 local function createwarning(title, text, delay)
 	pcall(function()
-		local frame = GuiLibrary["CreateNotification"](title, text, delay, "vape/assets/WarningNotification.png")
+		local frame = GuiLibrary["CreateNotification"](title, text, delay, "coffee/assets/WarningNotification.png")
 		frame.Frame.BackgroundColor3 = Color3.fromRGB(236, 129, 44)
 		frame.Frame.Frame.BackgroundColor3 = Color3.fromRGB(236, 129, 44)
 	end)
@@ -85,7 +85,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..path:gsub("coffee/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -2120,7 +2120,7 @@ print("done3")
 runcode(function()
 	local Overlay = GuiLibrary.CreateCustomWindow({
 		["Name"] = "Overlay", 
-		["Icon"] = "vape/assets/TargetIcon1.png",
+		["Icon"] = "coffee/assets/TargetIcon1.png",
 		["IconSize"] = 16
 	})
 	local label = Instance.new("TextLabel")
@@ -2137,7 +2137,7 @@ runcode(function()
 	Overlay["Bypass"] = true
 	GuiLibrary["ObjectsThatCanBeSaved"]["GUIWindow"]["Api"].CreateCustomToggle({
 		["Name"] = "Overlay", 
-		["Icon"] = "vape/assets/TargetIcon1.png", 
+		["Icon"] = "coffee/assets/TargetIcon1.png", 
 		["Function"] = function(callback)
 			Overlay.SetVisible(callback) 
 			if callback then

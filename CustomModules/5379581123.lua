@@ -76,7 +76,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..path:gsub("coffee/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)

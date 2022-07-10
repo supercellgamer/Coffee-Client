@@ -18,9 +18,9 @@ local vec3 = Vector3.new
 local cfnew = CFrame.new
 local function GetURL(scripturl)
 	if shared.VapeDeveloper then
-		return readfile("vape/"..scripturl)
+		return readfile("coffee/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..scripturl, true)
 	end
 end
 local entity = shared.vapeentity
@@ -62,9 +62,9 @@ end
 
 local function GetURL(scripturl)
 	if shared.VapeDeveloper then
-		return readfile("vape/"..scripturl)
+		return readfile("coffee/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..scripturl, true)
 	end
 end
 
@@ -207,7 +207,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/"..path:gsub("coffee/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -302,7 +302,7 @@ runcode(function()
 			shared.vapebypassed = true
 		end
 		spawn(function()
-			local chatsuc, chatres = pcall(function() return game:GetService("HttpService"):JSONDecode(readfile("vape/Profiles/bedwarssettings.json")) end)
+			local chatsuc, chatres = pcall(function() return game:GetService("HttpService"):JSONDecode(readfile("coffee/Profiles/bedwarssettings.json")) end)
 			if chatsuc then
 				if chatres.crashed and (not chatres.said) then
 					pcall(function()
@@ -315,7 +315,7 @@ runcode(function()
 						crashed = true,
 						said = true,
 					})
-					writefile("vape/Profiles/bedwarssettings.json", jsondata)
+					writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 				end
 				if chatres.crashed then
 					return nil
@@ -324,14 +324,14 @@ runcode(function()
 						crashed = true,
 						said = false,
 					})
-					writefile("vape/Profiles/bedwarssettings.json", jsondata)
+					writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 				end
 			else
 				local jsondata = game:GetService("HttpService"):JSONEncode({
 					crashed = true,
 					said = false,
 				})
-				writefile("vape/Profiles/bedwarssettings.json", jsondata)
+				writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 			end
 			for i3,v3 in pairs(whitelisted.chattags) do
 				if v3.NameColor then
@@ -402,7 +402,7 @@ runcode(function()
 				crashed = false,
 				said = false,
 			})
-			writefile("vape/Profiles/bedwarssettings.json", jsondata)
+			writefile("coffee/Profiles/bedwarssettings.json", jsondata)
 		end)
 	end
 end)
@@ -630,7 +630,7 @@ local function renderNametag(plr)
 				local playerlistplayers = playerlist.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame
 				local targetedplr = playerlistplayers:FindFirstChild("p_"..plr.UserId)
 				if targetedplr then 
-					targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("vape/assets/VapeIcon.png")
+					targetedplr.ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerIcon.Image = getcustomassetfunc("coffee/assets/VapeIcon.png")
 				end
 			end)
 		end
@@ -640,7 +640,7 @@ local function renderNametag(plr)
 				spawn(function()
 					pcall(function() 
 						bedwars["getEntityTable"]:getEntity(plr):setNametag(nametag)
-						Cape(char, getcustomassetfunc("vape/assets/VapeCape.png"))
+						Cape(char, getcustomassetfunc("coffee/assets/VapeCape.png"))
 					end)
 				end)
 			end
@@ -650,7 +650,7 @@ local function renderNametag(plr)
 				spawn(function()
 					pcall(function() 
 						bedwars["getEntityTable"]:getEntity(plr):setNametag(nametag)
-						Cape(plr.Character, getcustomassetfunc("vape/assets/VapeCape.png"))
+						Cape(plr.Character, getcustomassetfunc("coffee/assets/VapeCape.png"))
 					end)
 				end)
 			end
@@ -1727,7 +1727,7 @@ runcode(function()
 	local origtpstring = tpstring
 	local Overlay = GuiLibrary.CreateCustomWindow({
 		["Name"] = "Overlay", 
-		["Icon"] = "vape/assets/TargetIcon1.png",
+		["Icon"] = "coffee/assets/TargetIcon1.png",
 		["IconSize"] = 16
 	})
 	local overlayframe = Instance.new("Frame")
@@ -1774,7 +1774,7 @@ runcode(function()
 	local mapname = "Lobby"
 	GuiLibrary["ObjectsThatCanBeSaved"]["GUIWindow"]["Api"].CreateCustomToggle({
 		["Name"] = "Overlay", 
-		["Icon"] = "vape/assets/TargetIcon1.png", 
+		["Icon"] = "coffee/assets/TargetIcon1.png", 
 		["Function"] = function(callback)
 			Overlay.SetVisible(callback) 
 			if callback then
@@ -1799,7 +1799,7 @@ runcode(function()
 end)
 
 spawn(function()
-	local url = "https://raw.githubusercontent.com/supercellgamer/VapeV4ForRoblox/main/CustomModules/bedwarsdata"
+	local url = "https://raw.githubusercontent.com/supercellgamer/Coffee-Client/main/CustomModules/bedwarsdata"
 
 	local function createannouncement(announcetab)
 		local notifyframereal = Instance.new("TextButton")
@@ -1960,15 +1960,15 @@ spawn(function()
 	end
 
 	pcall(function()
-		if betterisfile("vape/Profiles/bedwarsdata.txt") == false then 
-			writefile("vape/Profiles/bedwarsdata.txt", game:HttpGet(url, true))
+		if betterisfile("coffee/Profiles/bedwarsdata.txt") == false then 
+			writefile("coffee/Profiles/bedwarsdata.txt", game:HttpGet(url, true))
 		end
-		local olddata = readfile("vape/Profiles/bedwarsdata.txt")
+		local olddata = readfile("coffee/Profiles/bedwarsdata.txt")
 		local newdata = game:HttpGet(url, true)
 		if newdata ~= olddata then 
 			rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 			olddata = newdata
-			writefile("vape/Profiles/bedwarsdata.txt", newdata)
+			writefile("coffee/Profiles/bedwarsdata.txt", newdata)
 		else
 			rundata(game:GetService("HttpService"):JSONDecode(olddata))
 		end
@@ -1978,7 +1978,7 @@ spawn(function()
 			if newdata ~= olddata then 
 				rundata(game:GetService("HttpService"):JSONDecode(newdata), game:GetService("HttpService"):JSONDecode(olddata))
 				olddata = newdata
-				writefile("vape/Profiles/bedwarsdata.txt", newdata)
+				writefile("coffee/Profiles/bedwarsdata.txt", newdata)
 			end
 		until uninjectflag
 	end)
